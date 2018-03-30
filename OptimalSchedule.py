@@ -20,12 +20,8 @@ def main():
     #start_time,duration
     input = ["05:00am,60", "10:00am,30", "10:15am,45", "11:00am,20", "11:15am,60", "12:30pm,60", "01:00pm,75"]
 
-    # LOL - whether the doc is busy or not for each minute in a 24hour period
-    busy = [True]*24*60
-
     # Not busy from 08:00 to 18:00 (8am - 6pm)
-    for k in range(8*60 - 1, 18*60):
-        busy[k] = False
+    busy = [True if (k < 8*60 or k > 18*60) else False for k in range(0, 24*60)]
     
     # Convert the input's start_time into minutes
     simplified_input = []
